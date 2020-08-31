@@ -1,0 +1,120 @@
+<domain type='kvm'>
+  <name>n5</name>
+  <memory unit='KiB'>786432</memory>
+  <currentMemory unit='KiB'>786432</currentMemory>
+  <vcpu placement='static'>1</vcpu>
+  <resource>
+    <partition>/machine</partition>
+  </resource>
+  <os>
+    <type arch='x86_64' machine='pc-i440fx-focal'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+    <pae/>
+  </features>
+  <cpu mode='custom' match='exact' check='full'>
+    <model fallback='forbid'>Skylake-Client-IBRS</model>
+    <vendor>Intel</vendor>
+    <feature policy='require' name='ss'/>
+    <feature policy='require' name='vmx'/>
+    <feature policy='require' name='hypervisor'/>
+    <feature policy='require' name='tsc_adjust'/>
+    <feature policy='require' name='clflushopt'/>
+    <feature policy='require' name='umip'/>
+    <feature policy='require' name='md-clear'/>
+    <feature policy='require' name='stibp'/>
+    <feature policy='require' name='arch-capabilities'/>
+    <feature policy='require' name='ssbd'/>
+    <feature policy='require' name='xsaves'/>
+    <feature policy='require' name='pdpe1gb'/>
+    <feature policy='require' name='ibpb'/>
+    <feature policy='require' name='amd-ssbd'/>
+    <feature policy='require' name='rdctl-no'/>
+    <feature policy='require' name='ibrs-all'/>
+    <feature policy='require' name='skip-l1dfl-vmentry'/>
+    <feature policy='require' name='mds-no'/>
+    <feature policy='disable' name='hle'/>
+    <feature policy='disable' name='rtm'/>
+    <feature policy='disable' name='mpx'/>
+  </cpu>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <devices>
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/n5.qcow2'/>
+      <target dev='vda' bus='virtio'/>
+      <alias name='virtio-disk0'/>
+    </disk>
+    <controller type='usb' index='0' model='piix3-uhci'>
+      <alias name='usb'/>
+    </controller>
+    <controller type='pci' index='0' model='pci-root'>
+      <alias name='pci.0'/>
+    </controller>
+    <interface type='bridge'>
+      <source bridge='virbr0'/>
+      <target dev='n5-eth0'/>
+      <model type='virtio'/>
+    </interface>
+    <interface type='bridge'>
+      <source bridge='br105'/>
+      <target dev='n5-swp1'/>
+      <model type='virtio'/>
+    </interface>
+    <interface type='bridge'>
+      <source bridge='br205'/>
+      <target dev='n5-swp2'/>
+      <model type='virtio'/>
+    </interface>
+    <interface type='bridge'>
+      <source bridge='br5113'/>
+      <target dev='n5-swp3'/>
+      <model type='virtio'/>
+    </interface>
+    <interface type='bridge'>
+      <source bridge='br5213'/>
+      <target dev='n5-swp4'/>
+      <model type='virtio'/>
+    </interface>
+    <interface type='bridge'>
+      <source bridge='br5313'/>
+      <target dev='n5-swp5'/>
+      <model type='virtio'/>
+    </interface>
+    <serial type='pty'>
+      <source path='/dev/pts/6'/>
+      <target type='isa-serial' port='0'>
+        <model name='isa-serial'/>
+      </target>
+      <alias name='serial0'/>
+    </serial>
+    <console type='pty' tty='/dev/pts/6'>
+      <source path='/dev/pts/6'/>
+      <target type='serial' port='0'/>
+      <alias name='serial0'/>
+    </console>
+    <input type='mouse' bus='ps2'>
+      <alias name='input0'/>
+    </input>
+    <input type='keyboard' bus='ps2'>
+      <alias name='input1'/>
+    </input>
+    <graphics type='vnc' autoport='yes' listen='127.0.0.1' keymap='en-us'>
+      <listen type='address' address='127.0.0.1'/>
+    </graphics>
+    <video>
+      <model type='cirrus' vram='16384' heads='1' primary='yes'/>
+      <alias name='video0'/>
+    </video>
+    <memballoon model='virtio'>
+      <alias name='balloon0'/>
+    </memballoon>
+  </devices>
+</domain>
