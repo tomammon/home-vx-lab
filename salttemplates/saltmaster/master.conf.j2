@@ -1,0 +1,29 @@
+{% include 'salttemplates/common/managed_by_salt.j2' %}
+
+#interface: grains['ip4_interfaces']['ens3'][0]
+
+#extension_modules: /srv/salt/modules
+
+file_roots:
+  base:
+    - /srv/salt
+
+fileserver_backend:
+  - git
+  - roots
+
+top_file_merging_strategy: same
+
+# we are using gitpython, remove pygit2 with apt-get remove python3-pygit2
+gitfs_remotes:
+
+  - ssh://git@github.com:tomammon/home-vx-lab:
+    - base: master
+
+state_top_saltenv: base
+
+jinja_env:
+  lstrip_blocks: True
+  trim_blocks: True
+
+#log_level: info
