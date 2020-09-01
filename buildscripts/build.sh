@@ -1,4 +1,5 @@
 #!/bin/bash
+# shell script to build home cumulus vx lab from scratch on ubuntu 20 workstation
 
 network_vms=(n1 n2 n3 n4 n5 n6 n7)
 host_vms=(h10 h11 h12 h13 h14 h15)
