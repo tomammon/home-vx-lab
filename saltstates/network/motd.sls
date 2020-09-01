@@ -3,5 +3,5 @@
     - user: root
     - group: root
     - mode: 0644
-    - source: salt://saltstates/motd.j2
+    - source: salt://salttemplates/common/motd.j2
     - template: jinja
