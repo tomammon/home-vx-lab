@@ -2,3 +2,5 @@
 
 include:
   - saltstates.common.motd
+  - .routing
+
