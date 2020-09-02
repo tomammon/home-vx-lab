@@ -30,6 +30,7 @@ apt-get install -y salt-minion
 echo Moving salt-minion to the mgmt vrf
 systemctl stop salt-minion
 systemctl disable salt-minion
+systemctl daemon-reload
 systemctl enable salt-minion@mgmt
 systemctl start salt-minion@mgmt
 
