@@ -32,5 +32,6 @@ systemctl stop salt-minion
 systemctl disable salt-minion
 systemctl daemon-reload
 systemctl enable salt-minion@mgmt
+systemctl daemon-reload
 systemctl start salt-minion@mgmt
 
