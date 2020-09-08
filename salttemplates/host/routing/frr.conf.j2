@@ -1,0 +1,10 @@
+{% set nodename = grains['host'] %}
+{% include 'salttemplates/common/managed_by_salt.j2' %}
+
+frr defaults datacenter
+hostname {{ nodename }}
+zebra nexthop proto only
+service integrated-vtysh-config
+!
+line vty
+!
