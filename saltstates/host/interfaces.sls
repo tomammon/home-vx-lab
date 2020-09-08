@@ -5,7 +5,7 @@
     - user: root
     - group: root
     - mode: 0644
-    - source: salt://salttemplates/network/interfaces/{{ nodename }}.j2
+    - source: salt://salttemplates/host/interfaces/{{ nodename }}.j2
     - template: jinja
 
 run_ifreload:

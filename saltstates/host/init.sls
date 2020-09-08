@@ -2,3 +2,4 @@
 
 include:
   - saltstates.common.motd
+  - .interfaces
