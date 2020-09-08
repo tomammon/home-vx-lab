@@ -1,5 +1,5 @@
 {% set nodename = grains['host'] %}
-{% include 'salttemplates/common/managed_by_salt.j2' %}
+{% include 'salttemplates/common/managed_by_salt_bang.j2' %}
 
 frr defaults datacenter
 hostname {{ nodename }}
