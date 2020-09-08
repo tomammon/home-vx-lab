@@ -8,6 +8,6 @@
 
 run_sysctl_load:
   cmd.run:
-    - name: 'sysctl -p'
+    - name: 'sysctl --system'
     - onchanges:
       - file: /etc/sysctl.d/noipv6.conf
