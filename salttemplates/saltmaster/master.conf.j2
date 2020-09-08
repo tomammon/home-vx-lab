@@ -1,9 +1,5 @@
 {% include 'salttemplates/common/managed_by_salt.j2' %}
 
-#interface: grains['ip4_interfaces']['ens3'][0]
-
-#extension_modules: /srv/salt/modules
-
 file_roots:
   base:
     - /srv/salt
@@ -14,7 +10,8 @@ fileserver_backend:
 
 top_file_merging_strategy: same
 
-# we are using gitpython, remove pygit2 with apt-get remove python3-pygit2
+# on straight debian systems using gitpython, remove pygit2 with apt-get remove python3-pygit2
+# this file is optimized for Ubuntu 20, so no changes to the default python git libraries are required
 gitfs_remotes:
 
   - git@github.com:tomammon/home-vx-lab.git:
@@ -26,4 +23,4 @@ jinja_env:
   lstrip_blocks: True
   trim_blocks: True
 
-#log_level: info
+log_level: info
