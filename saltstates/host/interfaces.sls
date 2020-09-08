@@ -1,4 +1,4 @@
-{% set nodename = grains['hostname'] %}
+{% set nodename = grains['host'] %}
 
 /etc/network/interfaces:
   file.managed:
