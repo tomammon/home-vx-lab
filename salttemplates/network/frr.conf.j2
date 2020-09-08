@@ -1,10 +1,45 @@
 {% set nodename = grains['host'] %}
-{% include 'salttemplates/common/managed_by_salt.j2' %}
+{% include 'salttemplates/common/managed_by_salt_bang.j2' %}
 
+frr version 7.4+cl4u1
 frr defaults datacenter
 hostname {{ nodename }}
+ip forwarding
 zebra nexthop proto only
 service integrated-vtysh-config
+!
+interface lo
+ ip ospf area 0.0.0.0
+!
+interface swp1
+ ip ospf area 0.0.0.0
+!
+interface swp2
+ ip ospf area 0.0.0.0
+!
+{% if nodename == 'n3' or nodename == 'n4' or nodename == 'n6' or nodename == 'n7' %}
+interface swp3
+ ip ospf area 0.0.0.0
+!
+interface swp4
+ ip ospf area 0.0.0.0
+!
+interface swp5
+ ip ospf area 0.0.0.0
+!
+{% endif %}
+{% if nodename == 'n3' %}
+interface swp7
+ ip ospf area 0.0.0.0
+!
+{% endif %}
+{% if nodename == 'n4' %}
+interface swp6
+ ip ospf area 0.0.0.0
+!
+{% endif %}
+
+router ospf
 !
 line vty
 !
