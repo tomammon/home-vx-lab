@@ -3,7 +3,7 @@
     - user: root
     - group: root
     - mode: 0644
-    - source: salt://saltstates/host/sysctl_noipv6.j2
+    - source: salt://salttemplates/host/sysctl_noipv6.j2
     - template: jinja
 
 run_sysctl_load:
