@@ -4,4 +4,3 @@ include:
   - saltstates.common.motd
   - .interfaces
   - .routing
-
