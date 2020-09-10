@@ -7,5 +7,5 @@ include:
   - .interfaces
   - .sysctl
 {% if grains['ibgp_role'] is defined %}
-  - .{{ ibgp_role }}
+  - .{{ grains['ibgp_role'] }}
 {% endif %}
