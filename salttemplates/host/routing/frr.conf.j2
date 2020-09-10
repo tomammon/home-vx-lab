@@ -23,8 +23,13 @@ router bgp 1000
  address-family ipv4 unicast
   neighbor LABFABRIC route-reflector-client
  exit-address-family
+ !
+ address-family l2vpn evpn
+  neighbor LABFABRIC activate
+ exit-address-family
 !
 router ospf
+ log-adjacency-changes
 !
 line vty
 !
