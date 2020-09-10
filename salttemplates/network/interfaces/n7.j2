@@ -37,9 +37,15 @@ iface swp5
 
 auto swp6
 iface swp6
-    address 10.9.103.7/24
+    bridge-access 30
 
 auto swp7
 iface swp7
     address 10.10.103.7/24
 
+auto bridge
+iface bridge
+    bridge-ports swp6
+    bridge-vids 30
+    bridge-pvid 1
+    bridge-vlan-aware yes

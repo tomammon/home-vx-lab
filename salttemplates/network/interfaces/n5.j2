@@ -25,7 +25,7 @@ iface swp2
 
 auto swp3
 iface swp3
-    address 10.4.103.5/24
+    bridge-access 20
 
 auto swp4
 iface swp4
@@ -33,4 +33,11 @@ iface swp4
 
 auto swp5
 iface swp5
-    address 10.6.103.5/24
+    bridge-access 30
+
+auto bridge
+iface bridge
+    bridge-ports swp3 swp5
+    bridge-vids 20 30
+    bridge-pvid 1
+    bridge-vlan-aware yes
