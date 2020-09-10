@@ -1,1 +1,2 @@
 node_type: network
+ibgp_role: route_reflector_client
