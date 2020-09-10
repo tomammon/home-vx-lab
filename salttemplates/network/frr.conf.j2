@@ -39,6 +39,17 @@ interface swp6
 !
 {% endif %}
 
+router bgp 1000
+ neighbor 10.100.1.10 remote-as 1000
+ neighbor 10.100.1.10 update-source lo
+ neighbor 10.100.1.12 remote-as 1000
+ neighbor 10.100.1.12 update-source lo
+ !
+ address-family ipv4 unicast
+  neighbor 10.100.1.10 route-reflector-client
+  neighbor 10.100.1.12 route-reflector-client
+ exit-address-family
+!
 router ospf
  log-adjacency-changes
 !

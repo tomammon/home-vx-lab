@@ -13,6 +13,17 @@ interface ens4
 interface lo
  ip ospf area 0.0.0.0
 !
+router bgp 1000
+ bgp log-neighbor-changes
+ neighbor LABFABRIC peer-group
+ neighbor LABFABRIC remote-as 1000
+ neighbor LABFABRIC update-source lo
+ bgp listen range 10.100.1.0/24 peer-group LABFABRIC
+ !
+ address-family ipv4 unicast
+  neighbor LABFABRIC route-reflector-client
+ exit-address-family
+!
 router ospf
 !
 line vty
