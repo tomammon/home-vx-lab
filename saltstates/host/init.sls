@@ -2,6 +2,7 @@
 {% set nodename = grains['host'] %}
 
 include:
+  - .grains
   - saltstates.common.motd
   - .interfaces
   - .sysctl
