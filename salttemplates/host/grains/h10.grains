@@ -1,0 +1,2 @@
+node_type: host
+ibgp_role: route_reflector
