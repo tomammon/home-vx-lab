@@ -45,7 +45,17 @@ iface swp7
 
 auto bridge
 iface bridge
-    bridge-ports swp6
+    bridge-ports swp6 vni-2020
     bridge-vids 20
     bridge-pvid 1
     bridge-vlan-aware yes
+
+auto vni-2020
+iface vni-2020
+    bridge-access 20
+    mstpctl-bpduguard yes
+    mstpctl-portbpdufilter yes
+    vxlan-id 2020
+    vxlan-local-tunnelip 10.100.1.3
+    vxlan-remoteip 10.100.1.5
+    bridge-learning on
